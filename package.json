@@ -1,0 +1,16 @@
+{
+    "name": "@litecanvas/jsdom-extras",
+    "version": "1.0.0",
+    "description": "Extra stuff to help in litecanvas' unit tests",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Luiz Bills <luizbills@pm.me>",
+    "license": "MIT",
+    "dependencies": {
+        "jsdom": "^26.1.0"
+    }
+}
