@@ -10,6 +10,7 @@ import test from 'ava'
 import { setupDOM } from '@litecanvas/jsdom-extras'
 import litecanvas from 'litecanvas'
 
+/** @type {LitecanvasInstance} */
 let local
 
 test.before(() => {
