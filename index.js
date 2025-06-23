@@ -1,4 +1,22 @@
 import { JSDOM } from 'jsdom'
+import 'litecanvas'
+
+/**
+ * @param {LitecanvasInstance} instance
+ * @param {string} event
+ * @param {Function} callback
+ * @returns {Promise<Function>}
+ */
+export function onLitecanvas(instance, event, callback) {
+    return new Promise((resolve) => {
+        const removeListener = instance.listen(event, (...args) => {
+            if (false !== callback(...args)) {
+                removeListener()
+                resolve()
+            }
+        })
+    })
+}
 
 export function setupDOM() {
     const dom = new JSDOM('<!doctype><html><body></body></html>')
