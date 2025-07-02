@@ -113,8 +113,6 @@ function createCanvasTag(window) {
 
 function createContext2d(canvas) {
     const ctx = {
-        _calls: [],
-
         canvas,
 
         fillStyle: '#000000',
@@ -130,23 +128,15 @@ function createContext2d(canvas) {
         textRendering: 'auto',
     }
 
-    return new Proxy(ctx, {
-        set(target, prop, value) {
-            target._calls.push(`set ${prop} ${value}`)
-            target[prop] = value
-            return true
-        },
-        get(target, prop, receiver) {
-            const value = target[prop]
-            if (value === undefined || value instanceof Function) {
-                return function (...args) {
-                    target._calls.push(`${prop}(${formatArgs(args).join(',')})`)
-                    return value ? value.apply(this === receiver ? target : this, args) : true
-                }
-            }
-            return value
-        },
-    })
+    const fn = () => {}
+    const methods =
+        'getContextAttributes,drawImage,beginPath,fill,stroke,clip,isPointInPath,isPointInStroke,createLinearGradient,createRadialGradient,createConicGradient,createPattern,createImageData,getImageData,putImageData,setLineDash,getLineDash,closePath,moveTo,lineTo,quadraticCurveTo,bezierCurveTo,arcTo,rect,roundRect,arc,ellipse,clearRect,fillRect,strokeRect,save,restore,reset,isContextLost,fillText,strokeText,measureText,scale,rotate,translate,transform,getTransform,setTransform,resetTransform,drawFocusIfNeeded,canvas,globalAlpha,globalCompositeOperation,strokeStyle,fillStyle,filter,imageSmoothingEnabled,lineWidth,lineCap,lineJoin,miterLimit,lineDashOffset,shadowOffsetX,shadowOffsetY,shadowBlur,shadowColor,font,textAlign,textBaseline,direction,letterSpacing,fontKerning,fontStretch,fontVariantCaps,textRendering,wordSpacing'
+
+    for (const method of methods.split(',')) {
+        ctx[method] = fn
+    }
+
+    return ctx
 }
 
 function formatArgs(args) {
