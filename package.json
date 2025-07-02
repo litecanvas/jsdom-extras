@@ -4,7 +4,9 @@
     "description": "Extra stuff to help in litecanvas' unit tests",
     "main": "index.js",
     "type": "module",
-    "scripts": {},
+    "scripts": {
+        "release": "np --no-tests"
+    },
     "keywords": [],
     "author": "Luiz Bills <luizbills@pm.me>",
     "license": "MIT",
