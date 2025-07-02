@@ -130,7 +130,7 @@ function createContext2d(canvas) {
 
     const fn = () => {}
     const methods =
-        'getContextAttributes,drawImage,beginPath,fill,stroke,clip,isPointInPath,isPointInStroke,createLinearGradient,createRadialGradient,createConicGradient,createPattern,createImageData,getImageData,putImageData,setLineDash,getLineDash,closePath,moveTo,lineTo,quadraticCurveTo,bezierCurveTo,arcTo,rect,roundRect,arc,ellipse,clearRect,fillRect,strokeRect,save,restore,reset,isContextLost,fillText,strokeText,measureText,scale,rotate,translate,transform,getTransform,setTransform,resetTransform,drawFocusIfNeeded,canvas,globalAlpha,globalCompositeOperation,strokeStyle,fillStyle,filter,imageSmoothingEnabled,lineWidth,lineCap,lineJoin,miterLimit,lineDashOffset,shadowOffsetX,shadowOffsetY,shadowBlur,shadowColor,font,textAlign,textBaseline,direction,letterSpacing,fontKerning,fontStretch,fontVariantCaps,textRendering,wordSpacing'
+        'getContextAttributes,drawImage,beginPath,fill,stroke,clip,isPointInPath,isPointInStroke,createLinearGradient,createRadialGradient,createConicGradient,createPattern,createImageData,getImageData,putImageData,setLineDash,getLineDash,closePath,moveTo,lineTo,quadraticCurveTo,bezierCurveTo,arcTo,rect,roundRect,arc,ellipse,clearRect,fillRect,strokeRect,save,restore,reset,isContextLost,fillText,strokeText,measureText,scale,rotate,translate,transform,getTransform,setTransform,resetTransform,drawFocusIfNeeded'
 
     for (const method of methods.split(',')) {
         ctx[method] = fn
