@@ -22,8 +22,8 @@ export function setupDOM() {
     const dom = new JSDOM('<!doctype><html><body></body></html>')
 
     // set screen size
-    dom.window.innerWidth = 800
-    dom.window.innerWidth = 600
+    dom.window.innerWidth = global.innerWidth = 800
+    dom.window.innerHeight = global.innerHeight = 600
 
     global.document = dom.window.document
     global.window = global.globalThis = dom.window
